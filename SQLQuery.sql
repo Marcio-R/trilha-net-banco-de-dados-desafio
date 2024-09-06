@@ -23,3 +23,29 @@ FROM Filmes
 GROUP BY ano
 ORDER BY COUNT(*) DESC;
 
+SELECT PrimeiroNome, UltimoNome, genero from Atores where Genero like '%M%'
+
+SELECT PrimeiroNome, UltimoNome, genero from Atores where Genero like '%F%' order by PrimeiroNome
+
+
+SELECT Filmes.nome, Generos.Genero AS genero
+FROM Filmes
+JOIN Generos ON Filmes.Id = Generos.Id order by Nome
+
+SELECT Filmes.nome, Generos.Genero AS genero
+FROM Filmes
+JOIN Generos ON Filmes.Id = Generos.Id where Genero = 'Mistério' order by Nome
+
+SELECT 
+    Filmes.nome AS NomeFilme, 
+    Atores.PrimeiroNome, 
+    Atores.UltimoNome, 
+    ElencoFilme.Papel
+FROM 
+    Filmes
+JOIN 
+    ElencoFilme ON Filmes.Id = ElencoFilme.IdFilme
+JOIN 
+    Atores ON ElencoFilme.IdAtor = Atores.Id
+ORDER BY 
+    NomeFilme;
